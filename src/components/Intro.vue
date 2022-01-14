@@ -12,7 +12,7 @@
       <p class="lead mb-4">
         Frjálsíþróttasamband Íslands býður þér núna um að sækja um félagaskipti
         á netinu þökk sé <a href="https://taktikal.is/" target="_blank">Taktial</a>. Þú þarft að hafa rafræn skilríki og kreditkort við höndina.
-        Auðkenning fer fram með rafrænum skílríkjum og kerfið leiðir þig í gegnum ferlið skref fyrir skref. Að lokum skrifar þú undir og greiðir.
+        Þú skráir þig inn og kerfið leiðir þig í gegnum ferlið. Að lokum skrifar þú undir og greiðir.
       </p>
       <div class="col-sm-12 col-md-9 col-lg-7 col-xl-8 col-xxl-7 mx-auto">
         <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" :initialFocus="true" />
