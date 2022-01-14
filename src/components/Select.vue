@@ -48,7 +48,7 @@ export default {
   mounted() {
     const kt = this.data?.personalId
     agent
-      .get('http://local.fri.is:3000/clubs')
+      .get(process.env.FRI_API_URL + '/clubs')
       .query({ kt })
       .then(res => {        
         this.clubs = res.body
