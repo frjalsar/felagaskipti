@@ -1,38 +1,33 @@
 <template>
-  <div class="px-4 py-5 my-5 text-center">
-    <img
-      class="d-block mx-auto mb-4"
-      src="../assets/logo.png"
-      alt="FRI"
-      width="150"
-      height="134"
-    />
-    <h1 class="display-5 fw-bold mb-4">Félagaskipti</h1>
-    <div class="col-lg-12 col-xl-10 mx-auto">
-      <p class="lead mb-4">
-        Frjálsíþróttasamband Íslands býður þér núna um að sækja um félagaskipti
-        á netinu þökk sé <a href="https://taktikal.is/" target="_blank">Taktial</a>. Þú þarft að hafa rafræn skilríki og kreditkort við höndina.
-        Þú skráir þig inn og kerfið leiðir þig í gegnum ferlið. Að lokum skrifar þú undir og greiðir.
-      </p>
-      <div class="col-sm-12 col-md-9 col-lg-7 col-xl-8 col-xxl-7 mx-auto">
-        <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" :initialFocus="true" />
-      </div>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button
-          type="button"
-          class="btn btn-primary btn-lg py-3 px-4 my-3"
-          @click="next"
-          :disabled="working">
+<div>
 
-          <span v-if="!working">Skrá mig inn</span>
-          <span v-if="working" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        </button>        
-      </div>
-      <div>
-        <small v-if="working">Beiðni var send í símann</small>
-      </div>
-    </div>
+  <p class="lead mb-4">
+    Frjálsíþróttasamband Íslands býður þér núna um að sækja um félagaskipti
+    á netinu með aðstoð <a href="https://taktikal.is/" target="_blank">Taktial</a>. Þú þarft að hafa rafræn skilríki og kreditkort við höndina.
+    Þú skráir þig inn og kerfið leiðir þig í gegnum ferlið. Að lokum skrifar þú undir og greiðir.
+  </p>
+
+  <div class="col-sm-12 col-md-9 col-lg-7 col-xl-8 col-xxl-7 mx-auto">
+    <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" :initialFocus="true" />
   </div>
+
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+    <button
+      type="button"
+      class="btn btn-primary btn-lg py-3 px-4 my-3"
+      @click="next"
+      :disabled="working">
+
+      <span v-if="!working">Skrá mig inn</span>
+      <span v-if="working" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    </button>
+  </div>
+  
+  <div>
+    <small v-if="working">Beiðni var send í símann</small>
+  </div>
+
+</div>
 </template>
 
 <script>
@@ -48,7 +43,7 @@ export default {
       phoneNumber: '',
     }
   },
-  methods: {    
+  methods: {
     login() {
       this.working = true
       return new Promise((res) => {
@@ -79,7 +74,7 @@ export default {
 };
 </script>
 
-<style scoped>  
+<style scoped>
 button.btn {
   min-width: 160px;
 
