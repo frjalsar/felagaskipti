@@ -42,17 +42,20 @@ export default {
   props: ['data'],
   data() {
     return {
+      phoneNumber: '',
       currentClub: undefined,
       selectedClub: undefined
     }
   },  
   methods: {
+    setPhoneNumber(nr) {
+      this.phoneNumber = nr
+    },
     next() {                 
       
     }
   },
   mounted() {
-    console.log(this.data)
     this.currentClub = this.data.currentClub
     this.selectedClub = this.data.selectedClub
   },

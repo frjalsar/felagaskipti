@@ -31,6 +31,7 @@
 
 <script>
 import agent from 'superagent'
+const apiUrl = import.meta.env.VITE_FRI_API_URL
 
 export default {
   props: ['data'],
@@ -48,7 +49,7 @@ export default {
   mounted() {
     const kt = this.data?.personalId
     agent
-      .get(process.env.FRI_API_URL + '/clubs')
+      .get(apiUrl + '/clubs')
       .query({ kt })
       .then(res => {        
         this.clubs = res.body
