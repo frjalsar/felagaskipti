@@ -1,4 +1,4 @@
-<template>
+ .+2<template>
   <div class="row">
     <div class="col g-1" v-for="nr in inputs" :key="nr">
       <input type="text" class="form-control form-control-lg" maxlength="1" @keydown.prevent="(evt) => keyHandler(evt, nr)" :ref="'DigitInput-' + nr"/>    
@@ -70,5 +70,13 @@ input.form-control-lg {
   height: 100px;
   font-size: 3rem;
   text-align: center;
+}
+
+@media (max-width: 520px) {
+  input.form-control-lg {
+    font-size: 2rem;
+    padding: 0;
+    height: 50px;
+  }
 }
 </style>
