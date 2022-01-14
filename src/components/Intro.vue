@@ -11,9 +11,8 @@
     <div class="col-lg-12 col-xl-10 mx-auto">
       <p class="lead mb-4">
         Frjálsíþróttasamband Íslands býður þér núna um að sækja um félagaskipti
-        á netinu. Þú þarft að hafa rafræn skilríki og kreditkort við höndina.
-        Auðkenning fer fram á island.is sem sendir þig aftur á vefsíðu FRÍ, þar
-        fylgir þú ferlinu skref fyrir skref og endar á að skrifa rafrænt undir.
+        á netinu þökk sé <a href="https://taktikal.is/" target="_blank">Taktial</a>. Þú þarft að hafa rafræn skilríki og kreditkort við höndina.
+        Auðkenning fer fram með rafrænum skílríkjum og kerfið leiðir þig í gegnum ferlið skref fyrir skref. Að lokum skrifar þú undir og greiðir.
       </p>
       <div class="col-sm-12 col-md-9 col-lg-7 col-xl-8 col-xxl-7 mx-auto">
         <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" :initialFocus="true" />
