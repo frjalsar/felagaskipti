@@ -18,7 +18,7 @@
         Skráðu inn símanúmerið hans.
       </p>
       <div class="col-sm-12 col-md-9 col-lg-7 col-xl-8 col-xxl-7 mx-auto mb-4">
-        <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" :initialFocus="true" />
+        <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" />
       </div>
       <p class="lead mb-4">
         Þegar þú ýtir á <em>"Skrifa undir"</em> þá sendist undirritunarbeiðni á þig og símanúmerið sem þú gafst upp.
