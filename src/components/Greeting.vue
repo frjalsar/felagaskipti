@@ -10,8 +10,19 @@
     <h1 class="display-5 fw-bold my-4">Hæ {{ name }}</h1>
     <div class="col-lg-12 col-xl-10 mx-auto">
       <p class="lead mb-4">
-        Samkvæmt okkar núverandi skráningu ert þú skráður í <br />
-        <strong>{{ club?.fullName }}</strong>
+        Samkvæmt okkar núverandi skráningu ert þú skráður í <strong>{{ club?.fullName }}</strong> 
+        <span v-if="lastCompeted">
+          og kepptir seinast {{ competitionDate }}.
+          <span v-if="sameYear">
+             Þar sem þú hefur keppt fyrir {{ club?.fullName }} á þessu almanaksári þá tekur umsókn þín ekki gildi fyrr en á nýju ári.
+          </span>
+          <span v-else>
+            Þar sem þú hefur ekki keppt fyrir {{ club?.fullName }} á þessu almanaksári þá tekur umsókn þín gildi um leið og þú lýkur við greiðslu í seinasta skrefinu.
+          </span>
+        </span>
+        <span v-else>
+          og hefur enga skráða keppni. Umsókn þín tekur því gildi um leið og þú lýkur við greiðslu í seinasta skrefinu.
+        </span>
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <button type="button" class="btn btn-primary btn-lg py-3 px-4 my-3" @click="next" autofocus="autofocus">
@@ -24,6 +35,8 @@
 </template>
 
 <script>
+import { format} from 'date-fns'
+import { is } from 'date-fns/locale'
 import agent from 'superagent'
 const apiUrl = import.meta.env.VITE_FRI_API_URL
 
@@ -31,17 +44,35 @@ export default {
   props: ['data'],
   data() {
     return {
-      club: undefined      
+      club: undefined,
+      lastCompeted: undefined
     }
   },
   computed: {
     name() {      
       return this.data.user?.name.split(' ').slice(0, -1).join(' ')
+    },
+    competitionDate() {      
+      if (!this.lastCompeted) {
+        return ''
+      }
+      return format(new Date(this.lastCompeted), 'd. MMMM yyyy', { locale: is })
+    },
+    sameYear() {
+      if (!this.lastCompeted) {
+        return undefined
+      }
+
+      return new Date().getFullYear() === new Date(this.lastCompeted).getFullYear()
     }
   },
-  methods: {
+  methods: {    
     next() {                 
-      this.$emit('next', { currentClub: this.club })
+      this.$emit('next', {
+        currentClub: this.club,
+        lastCompeted: this.lastCompeted,
+        
+      })
     }
   },
   mounted() {
@@ -51,7 +82,8 @@ export default {
       .query({ kt })
       .then(res => {        
         if (res.body.length === 1) {
-          this.club = res.body[0].club           
+          this.club = res.body[0].club
+          this.lastCompeted = new Date(2022,0, 5)
         }
       })
   },
