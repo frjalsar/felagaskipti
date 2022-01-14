@@ -1,7 +1,7 @@
  .+2<template>
   <div class="row">
     <div class="col g-1" v-for="nr in inputs" :key="nr">
-      <input type="text" class="form-control form-control-lg" maxlength="1" @keydown.prevent="(evt) => keyHandler(evt, nr)" :ref="'DigitInput-' + nr"/>    
+      <input type="tel" class="form-control form-control-lg" maxlength="1" @keydown.prevent="(evt) => keyHandler(evt, nr)" :ref="'DigitInput-' + nr"/>    
     </div>
   </div>
 </template>
