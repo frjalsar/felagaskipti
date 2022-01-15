@@ -20,7 +20,7 @@
   </p>
 
   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-    <button type="button" class="btn btn-primary btn-lg py-3 px-4 my-3" @click="next" autofocus="autofocus">
+    <button type="button" class="btn btn-primary btn-lg py-3 px-4 my-3" @click="next" autofocus="autofocus" :disabled="!selectedClub">
       Skrifa undir
     </button>
     <button type="button" class="btn btn-outline-secondary btn-lg py-3 px-4 my-3" @click="back">Til baka</button>
