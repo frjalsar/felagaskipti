@@ -73,7 +73,7 @@ export default {
       .then(res => {        
         if (res.body.length === 1) {
           this.club = res.body[0].club
-          this.lastCompeted = new Date(2022,0, 5)
+          this.lastCompeted = res.body[0].lastCompeted
         }
       })
   },
