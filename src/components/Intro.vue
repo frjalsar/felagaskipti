@@ -8,7 +8,7 @@
   </p>
 
   <div class="col-sm-12 col-md-9 col-lg-7 col-xl-8 col-xxl-7 mx-auto">
-    <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" :initialFocus="true" />
+    <DigitInput :inputs="7" :dashes="[4]" @confirmed="next" @digit="setPhoneNumber" :autofocus="true" />
   </div>
 
   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">

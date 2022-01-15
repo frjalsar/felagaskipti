@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'DigitInput',
-  props: ['inputs', 'dashes', 'initialFocus'],
+  props: ['inputs', 'dashes', 'autofocus'],
   data() {
     return {
       digit: ''
@@ -54,9 +54,11 @@ export default {
     }    
   },
   mounted() {
-    const firstEl = this.$refs['DigitInput-1']
-    firstEl[0].focus()
-    firstEl[0].select()
+    if (this.autofocus) {
+      const firstEl = this.$refs['DigitInput-1']
+      firstEl[0].focus()
+      firstEl[0].select()
+    }
   }
 }
 </script>
