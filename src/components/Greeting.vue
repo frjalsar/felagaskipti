@@ -1,7 +1,9 @@
 <template>
 <div>
-
-  <p class="lead mb-4">
+  <p class="lead mb-4" v-if="error">
+    Við náum ekki tengingu við kerfin okkar. Vinsamlegast prófaður aftur síðar.
+  </p> 
+  <p class="lead mb-4" v-else>
     Samkvæmt okkar núverandi skráningu ert þú skráður í <strong>{{ club?.fullName }}</strong> 
     <span v-if="lastCompeted">
       og kepptir seinast {{ competitionDate }}.
@@ -38,7 +40,8 @@ export default {
   data() {
     return {
       club: undefined,
-      lastCompeted: undefined
+      lastCompeted: undefined,
+      error: false
     }
   },
   computed: {
@@ -59,9 +62,8 @@ export default {
   methods: {    
     next() {                 
       this.$emit('next', {
-        currentClub: this.club,
+        currentClub: this.club,  
         lastCompeted: this.lastCompeted,
-        
       })
     }
   },
@@ -75,6 +77,9 @@ export default {
           this.club = res.body[0].club
           this.lastCompeted = res.body[0].lastCompeted
         }
+      })
+      .catch(e => {
+        this.error = true
       })
   },
 };
