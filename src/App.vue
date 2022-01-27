@@ -10,7 +10,7 @@
       />
       <h1 class="display-5 fw-bold mb-4">{{ title }}</h1>
       <div class="col-lg-12 col-xl-10 mx-auto">
-        <component :is="steps[step]" :data="data" @next="next" />  
+        <component :is="steps[step]" :data="data" @next="next" />
       </div>
     </div>
   </main>
@@ -28,6 +28,10 @@ export default {
     Greeting,
     Select,
     Confirm,
+  },
+  provide: {
+    FRI_API_URL: import.meta.env.VITE_FRI_API_URL,
+    FRI_API_TOKEN: import.meta.env.VITE_FRI_API_TOKEN,    
   },
   data() {
     return {

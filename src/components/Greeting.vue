@@ -33,10 +33,10 @@
 import { format} from 'date-fns'
 import { is } from 'date-fns/locale'
 import agent from 'superagent'
-const apiUrl = import.meta.env.VITE_FRI_API_URL
 
 export default {
   props: ['data'],
+  inject: ['FRI_API_URL', 'FRI_API_TOKEN'],
   data() {
     return {
       club: undefined,
@@ -70,7 +70,8 @@ export default {
   mounted() {
     const kt = this.data.user?.personalId
     agent
-      .get(apiUrl + '/athletes')
+      .get(this.FRI_API_URL + '/athletes')
+      .auth(this.FRI_API_TOKEN, { type: 'bearer' })
       .query({ kt })
       .then(res => {        
         if (res.body.length === 1) {

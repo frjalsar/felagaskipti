@@ -24,10 +24,10 @@
 
 <script>
 import agent from 'superagent'
-const apiUrl = import.meta.env.VITE_FRI_API_URL
 
 export default {
   props: ['data'],
+  inject: ['FRI_API_URL', 'FRI_API_TOKEN'],
   data() {
     return {
       selectedClub: undefined,
@@ -42,7 +42,8 @@ export default {
   mounted() {
     const kt = this.data?.personalId
     agent
-      .get(apiUrl + '/clubs')
+      .get(this.FRI_API_URL + '/clubs')
+      .auth(this.FRI_API_TOKEN, { type: 'bearer' })      
       .query({ kt })
       .then(res => {
         this.clubs = res.body
